@@ -1,12 +1,14 @@
 {% extends  'shared/base.html'%}
 {% block content %}
-<div class="header">Our Breads...</div>
+<div class="breadtent">
+<div class="header">Our Breads...<a href="{% url 'breadapp:bread_form' %}">Create new bread</a></div>
 <div class="list-container">
-<a href="{% url 'breadapp:bread_form' %}">Create new bread</a>
+
     <ul>
         {%for bread in breads%}
         <li><a href={%url 'breadapp:bread_details' bread.id%}>{{bread}}</a></li>
         {%endfor%}
     </ul>
+</div>
 </div>
 {%endblock %}
