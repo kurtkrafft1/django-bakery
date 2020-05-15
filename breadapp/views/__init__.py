@@ -1,1 +1,1 @@
-from .bread import bread_list, bread_form, bread_details
+from .bread import bread_list, bread_form, bread_details, bread_edit_form
