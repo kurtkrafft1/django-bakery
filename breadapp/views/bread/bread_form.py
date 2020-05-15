@@ -12,3 +12,24 @@ def bread_form(request):
 
     }
     return render(request, template, context)
+def get_bread(bread_id):
+    with sqlite3.connect(Connection.db_path) as conn:
+        conn.row_factory = model_factory(Bread)
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+            SELECT * from breadapp_bread where id = ?
+        """, (bread_id,))
+
+        bread = db_cursor.fetchone()
+
+        return bread
+
+def bread_edit_form(request, bread_id):
+    bread = get_bread(bread_id)
+    context = {
+        'bread': bread
+    }
+    template = "bread/bread_form.html"
+
+    return render(request, template, context)
