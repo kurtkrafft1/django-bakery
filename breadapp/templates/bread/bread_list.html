@@ -1,0 +1,11 @@
+{% extends  'shared/base.html'%}
+{% block content %}
+<div class="header">Our Breads...</div>
+<div class="list-container">
+    <ul>
+        {%for bread in breads%}
+        <li><a href="#">{{bread}}</a></li>
+        {%endfor%}
+    </ul>
+</div>
+{%endblock %}
