@@ -17,7 +17,7 @@ def get_bread(bread_id):
         conn.row_factory = model_factory(Bread)
         db_cursor = conn.cursor()
 
-        db_cursor("""
+        db_cursor.execute("""
             SELECT * from breadapp_bread where id = ?
         """, (bread_id,))
 
@@ -27,4 +27,9 @@ def get_bread(bread_id):
 
 def bread_edit_form(request, bread_id):
     bread = get_bread(bread_id)
-    
+    context = {
+        'bread': bread
+    }
+    template = "bread/bread_form.html"
+
+    return render(request, template, context)

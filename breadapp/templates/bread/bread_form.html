@@ -3,6 +3,26 @@
 {%block content%}
     <div class="bread-form">
 
+    
+    
+
+    {%if bread.id is not None%}
+    <form action="{%url 'breadapp:bread_details' bread.id%}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="actual_method" value="PUT" />
+    <fieldset>
+        <label for="name">Name: </label>
+        <p  name="name" id="name">{{bread.name}}</p>
+    </fieldset>
+    <fieldset>
+        <label for="region">Region: </label>
+        <input type="text" name="region" id="region" value="{{bread.region}}"/>
+    </fieldset>
+    <fieldset>
+        <input type="submit" />
+    </fieldset>
+    </form>
+    {%else%}
     <form action="{%url 'breadapp:breads' %}" method="POST">
     {% csrf_token %}
     <fieldset>
@@ -17,6 +37,7 @@
         <input type="submit" />
     </fieldset>
     </form>
+    {% endif %}
 
     </div>
 {%endblock%}
