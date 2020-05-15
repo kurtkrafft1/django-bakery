@@ -1,0 +1,33 @@
+    {% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Better off Bread</title>
+    {% comment %} <link rel="stylesheet" href="{% static 'styles/base.css' %}" type="text/css" media="screen" /> {% endcomment %}
+
+    {% block css %}
+    {% endblock %}
+</head>
+
+<body>
+<nav>
+<h1>Better Off Bread</h1>
+</nav>
+
+    
+
+
+    <main class="main-content">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    {%block scripts%}
+
+    {% endblock scripts %}
+
+</body>
+
+</html>
