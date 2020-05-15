@@ -8,7 +8,11 @@
 <div class="bread-container">
 <ul>
 {%for ing in bread.all_ingredients %}
-    <li>{{ing}} -{{ing.amount}}</li>
+    {%if ing.name != null%}
+    <li>{{ing}} -{{ing.amount}}</li><form action="{%url 'breadapp:bread_details' ing.relationship_id%}" method="POST">{% csrf_token %}<input type="hidden" name="actual_method" value="DELETE" /><input type="submit" value="Delete"/></form>
+    {%else%}
+    <li>This bread has no ingredients</li>
+    {% endif %}
 {%endfor%}
 </ul>
 </div>
