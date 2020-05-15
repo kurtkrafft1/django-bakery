@@ -1,0 +1,15 @@
+{% extends 'shared/base.html' %}
+
+{%load static%}
+
+{%block content%}
+<div class="header">{{bread}}</div>
+
+<div class="bread-container">
+<ul>
+{%for ing in bread.all_ingredients %}
+    <li>{{ing}} -{{ing.amount}}</li>
+{%endfor%}
+</ul>
+</div>
+{%endblock%}
